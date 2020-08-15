@@ -44,9 +44,33 @@
 // console.log(incr);
 // console.log(decr);  
 
-console.log(2*4 === 8);
+// console.log(2*4 === 8);
 
-const isChecked = true,
-      isClose =true;
+// const isChecked = true,
+//       isClose =true;
 
-console.log(isChecked || isClose);
+// console.log(isChecked || isClose);
+
+/////////////////////////////////////
+//lesson 12
+
+const numberOfFilms = +prompt('Скільки фільмів ви бачили?', '');//заитуєм в спливаючому вікні скільки фільмів ви вже бачили, "+" біля prompt це означає що користувач який буде давати відповідь має змогу дати відповідь в чилах, не тільки в словах
+
+const personalMovieDB = {//стфорюємо зміннну-базуданих
+    count: numberOfFilms,// в цю змінну попадає наша відповідь на питання "скільки фільмів ви бачили?"
+    movies: {},//в цю змінну будемо виводити
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+const a = prompt('Один із останіх переглянутих філмів', ''),
+      b = prompt('Дайте його цінку', ''),
+      c = prompt('Один із останіх переглянутих філмів', ''),
+      d = prompt('Дайте його цінку', '');
+      
+personalMovieDB.movies[a] = b;//присвоюєм щоб з [a] питання давало відповідь по відношені до  b; і щоб виводило в .movies в консолі
+personalMovieDB.movies[c] = d;// те саме що вище тільки для [c] = d
+
+console.log(personalMovieDB);//виводимо
+      
