@@ -208,24 +208,65 @@
 // showFirstMessage('hello world');
 
 
-let num = 20;//створення глобальної змінної
+// let num = 20;//створення глобальної змінної
     
-function showFirstMessage(text) { 
-         console.log('Hello world');
-         let num = 20;//створення локальної змінної, локальна через те що вона створюється в умові function
-     }
+// function showFirstMessage(text) { 
+//          console.log('Hello world');
+//          let num = 20;//створення локальної змінної, локальна через те що вона створюється в умові function
+//      }
     
-     showFirstMessage('hello world');
-     console.log(num);
+//      showFirstMessage('hello world');
+//      console.log(num);
     
-function calc(a, b) {
-    return (a + b);//return (a + b) функція повернення значення на зовні 
-}
-console.log(calc(4, 3));
-console.log(calc(5, 6));
-console.log(calc(7, 3));
+// // function calc(a, b) {// function declaration 
+// //     return (a + b);//return (a + b) функція повернення значення на зовні 
+// // }
+// // console.log(calc(4, 3));
+// // console.log(calc(5, 6));
+// // console.log(calc(7, 3));
 
-function ret() {
-    let num = 50;
-    return num;//повертаємо значення локальної змінної
-}
+// function ret() {
+//     let num = 50;
+//     return num;//повертаємо значення локальної змінної
+// }
+
+// const anotherNum = ret();
+// console.log(anotherNum);
+
+// const logger = function() {//function expression
+//     console.log('Hello');
+// };
+
+// logger();
+
+// const calc = (a, b) => { return a + b };//стрілочні функції () => 
+
+const str = "test";
+// const arr = [1, 2, 4];
+
+// console.log(arr.length);//length виводить скільки символів є в нашій змінні, це може бути як і масив так і строка
+
+console.log(str.toUpperCase());//даний метод перетворює строку в верхній регістр(прописні букви)
+console.log(str.toLowerCase());//даний метод перетворює строку в нижній регістр(маленькі букви)
+console.log(str);
+
+
+const fruit = "Some fruit";
+
+console.log(fruit.indexOf("fruit"));//indexOf - метод який позволяє знайти кусочок нашої строки і показати з якго індексу воно починається
+
+const logg = "hello world";
+
+console.log(logg.slice(6, 11));// slice(6, 11)метод який дозволяю вирізати елемети з строки logg і в нашому випадку вирізає елементи з 7-10 тому що вкащзано в нас з 6-11 а так  як даний метод не бере до уваги те яке вказано а розуміє що потрібно починати після 6 і до 11 тобто це буде 7-10 включно, даний метод підтримує мінусові чила тобто якщо числа + то нумерація з ліва на право а якщо числа - тоді нумерація з права на ліво
+
+console.log(logg.substring(6, 11));// substring(6, 11) метод який практично такий ж як і slice(6, 11) тільки відмінність в тому що можна перший(6) аругемент задавати більшим ніж другий(11), але числа тут не можуть починатись з -, тільки додатні числа
+
+console.log(logg.substr(6, 5));// даний метод відрізняється тим що тут немає початку і кінця за яким метод має оієнтуватись щоб вирізати символи, тут є початок з якого символу очати і через кому є другий аргумент який означає- скільки символів потрібно вирізати
+
+const num = 12.2;
+console.log(Math.round(num));//метод який округлює не цілі числа 
+
+const test = "12.2px";
+console.log(parseInt(test));//parseInt(test) метод який переводить число в іншу систему числення наприклад з строки в числовий тип даних
+console.log(parseFloat(test));//parseFloat(test) метод який повертає нам числа не в цілі а так як вни є, в нашому випадку 12.2 а не 12, не круглює їх
+
