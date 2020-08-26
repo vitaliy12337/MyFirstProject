@@ -277,86 +277,112 @@
 /////////////////////////////////////////
 ///////lesson 18 практичне заняття 3
 
-let numberOfFilms; 
+// let numberOfFilms; 
 
-function start() {
-    numberOfFilms = +prompt('Скільки фільмів ви бачили?', '');
+// function start() {
+//     numberOfFilms = +prompt('Скільки фільмів ви бачили?', '');
 
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Скільки фільмів ви бачили?', '');
-    }
+//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+//         numberOfFilms = +prompt('Скільки фільмів ви бачили?', '');
+//     }
 
-}
+// }
 
-start();//викликаэмо функцію
+// start();//викликаэмо функцію
 
-const personalMovieDB = {//стфорюємо зміннну-базуданих
-    count: numberOfFilms,// в цю змінну попадає наша відповідь на питання "скільки фільмів ви бачили?"
-    movies: {},//в цю змінну будемо виводити
-    actors: {},
-    genres: [],
-    privat: false
-};
-
-
+// const personalMovieDB = {//стфорюємо зміннну-базуданих
+//     count: numberOfFilms,// в цю змінну попадає наша відповідь на питання "скільки фільмів ви бачили?"
+//     movies: {},//в цю змінну будемо виводити
+//     actors: {},
+//     genres: [],
+//     privat: false
+// };
 
 
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        const a = prompt('Один із останіх переглянутих філмів', ''),
-              b = prompt('Дайте його цінку', '');
+
+
+// function rememberMyFilms() {
+//     for (let i = 0; i < 2; i++) {
+//         const a = prompt('Один із останіх переглянутих філмів', ''),
+//               b = prompt('Дайте його цінку', '');
     
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log('done');
-        } else {
-            console.log('error');
-            i--;//оПератор декрименту, щоб якщо у нас if не виконається щоб цикл повернувся ще раз до початку і користувач був змушений вписати відповідь а не залишати пусту сторінку, пуста сторіна це у нас null
-        }
+//         if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+//             personalMovieDB.movies[a] = b;
+//             console.log('done');
+//         } else {
+//             console.log('error');
+//             i--;//оПератор декрименту, щоб якщо у нас if не виконається щоб цикл повернувся ще раз до початку і користувач був змушений вписати відповідь а не залишати пусту сторінку, пуста сторіна це у нас null
+//         }
     
-    }
+//     }
 
-}
+// }
 
-// rememberMyFilms();
+// // rememberMyFilms();
 
 
-function detectetPersonalLevel()  {
+// function detectetPersonalLevel()  {
     
-    if (personalMovieDB.count < 10){
-        console.log('переглянуто дуже мало фільмів');
-    } else if (personalMovieDB.count >= 10 && personalMovieDB.count > 10) {
-        console.log(' ви класний кіноглядач');
-    } else if (personalMovieDB.count >= 30) {
-        console.log('ви кіноман');
-    } else {
-        console.log('виникла помилка');
-    }
+//     if (personalMovieDB.count < 10){
+//         console.log('переглянуто дуже мало фільмів');
+//     } else if (personalMovieDB.count >= 10 && personalMovieDB.count > 10) {
+//         console.log(' ви класний кіноглядач');
+//     } else if (personalMovieDB.count >= 30) {
+//         console.log('ви кіноман');
+//     } else {
+//         console.log('виникла помилка');
+//     }
 
+// }
+
+// // detectetPersonalLevel();
+
+// function showMyDB (hidden) {
+//     if (!hidden) {
+//         console.log(personalMovieDB);
+
+//     }
+
+
+
+// }
+// showMyDB(personalMovieDB.privat);
+// // console.log(personalMovieDB);//виводимо
+
+// function writeYourGenres() {
+//     for (let i = 1; i <= 3; i++){
+//         const genre = prompt(`Ваш улюблений жанр під номером: ${i}`);//!!!щоб працювало ${i} потрібно поставити не " а `  там де Ё !!!!!
+//         personalMovieDB.genres[i - 1] = genre;
+//     }
+// }
+
+// writeYourGenres();
+
+
+
+////////////////////////////////////////////
+//////lesson 19 Callback - funktions
+
+
+// do something
+function first() {
+    setTimeout(function () {
+        console.log(1);
+    }, 500);// вказуємо затримку в 500 мл.с. тобто що результат(1) видасть з затримкою 
 }
 
-// detectetPersonalLevel();
-
-function showMyDB (hidden) {
-    if (!hidden) {
-        console.log(personalMovieDB);
-
-    }
-
-
-
-}
-showMyDB(personalMovieDB.privat);
-// console.log(personalMovieDB);//виводимо
-
-function writeYourGenres() {
-    for (let i = 1; i <= 3; i++){
-        const genre = prompt(`Ваш улюблений жанр під номером: ${i}`);//!!!щоб працювало ${i} потрібно поставити не " а `  там де Ё !!!!!
-        personalMovieDB.genres[i - 1] = genre;
-    }
+function second() {
+    console.log(2);
 }
 
-writeYourGenres();
+first();
+second();
 
+function learnJS(lang, Callback) {// створюємо аргументи функції lang, Callback щоб потім до них звернутись
+    console.log(`я вчу: ${lang}`);
+    Callback();//позволяє зробити так щоб перше вивело ${lang} в нашому випадку виведе я вчу: JavaScript тому що аргумент lang це є JavaScript і ми його нижче позначаємо
+}
 
-
+learnJS('JavaScript', function(){//тут ми викликаємо функцію але і в викликанні функції створюємо функцію щоб вивести Я пройшов цей урок!, це можна зробити іншим способом створишвши функцію перед тим і потім просто викликати її  
+    console.log('Я пройшов цей урок!');
+});
