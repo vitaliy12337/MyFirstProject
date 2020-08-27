@@ -364,25 +364,70 @@
 //////lesson 19 Callback - funktions
 
 
-// do something
-function first() {
-    setTimeout(function () {
-        console.log(1);
-    }, 500);// вказуємо затримку в 500 мл.с. тобто що результат(1) видасть з затримкою 
-}
+// // do something
+// function first() {
+//     setTimeout(function () {
+//         console.log(1);
+//     }, 500);// вказуємо затримку в 500 мл.с. тобто що результат(1) видасть з затримкою 
+// }
 
-function second() {
-    console.log(2);
-}
+// function second() {
+//     console.log(2);
+// }
 
-first();
-second();
+// first();
+// second();
 
-function learnJS(lang, Callback) {// створюємо аргументи функції lang, Callback щоб потім до них звернутись
-    console.log(`я вчу: ${lang}`);
-    Callback();//позволяє зробити так щоб перше вивело ${lang} в нашому випадку виведе я вчу: JavaScript тому що аргумент lang це є JavaScript і ми його нижче позначаємо
-}
+// function learnJS(lang, Callback) {// створюємо аргументи функції lang, Callback щоб потім до них звернутись
+//     console.log(`я вчу: ${lang}`);
+//     Callback();//позволяє зробити так щоб перше вивело ${lang} в нашому випадку виведе я вчу: JavaScript тому що аргумент lang це є JavaScript і ми його нижче позначаємо
+// }
 
-learnJS('JavaScript', function(){//тут ми викликаємо функцію але і в викликанні функції створюємо функцію щоб вивести Я пройшов цей урок!, це можна зробити іншим способом створишвши функцію перед тим і потім просто викликати її  
-    console.log('Я пройшов цей урок!');
-});
+// learnJS('JavaScript', function(){//тут ми викликаємо функцію але і в викликанні функції створюємо функцію щоб вивести Я пройшов цей урок!, це можна зробити іншим способом створишвши функцію перед тим і потім просто викликати її  
+//     console.log('Я пройшов цей урок!');
+// });
+
+
+////////////////////////////////////////////
+///////////lesson 20
+
+
+const options = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border:'black',
+        bg:'red'
+    },
+    makeTest: function(){//створили метод який покищо нычого не робить
+        console.log('test');
+    }
+};
+
+options.makeTest();
+
+const { border, bg} = options.colors;//деструкторизація
+console.log(border);
+
+//console.log(Object.keys(options).length);//object.keys())-ключі нашого обєктf, цей метод бере наш обєкт і на його основі створює масив в якому всі елементи це ключі, які знаходяться на першій частині пари ключів значиння в обєктів, .length рахує і ивводить в числі скільки обєктів нам вивів Object.keys в нашому випадку це 4, тому що в options є 4 обєкти
+
+// // console.log(options.name);// виводимо з "ключа" - 'name' "значення" - 'test'
+
+// // delete options.name;//  видаляємо з консолы значення test щоб воно не виводлось
+
+// // console.log(options);.// перевыряэмо чи видалилосьзначення test
+// let counter = 0;//лічильник який рахуватиме скільки в options є обєктів
+// for (let key in options) {//(let key in options) створюємо змінну key і за допопмогою команди in кажемо що будемо перебирати значенн в options
+//     if (typeof(options[key]) === 'object'){//перевіряємо тип даних в options[key] і він повинен строго дорівнювати object
+//         for (let i in options[key]){//створюємо змінну "і" і перебираємо обєкти в ключі options[key] 
+//             console.log(`Свойство ${i}, имеет значение ${options[key][i]}`);
+//             counter++;//лічильник який рахуватиме скільки в options є обєктів
+//         }
+//     }else {
+//         console.log(`Свойство ${key}, имеет значение ${options[key]}`);
+//         counter++;//лічильник який рахуватиме скільки в options є обєктів
+//     }
+// }
+// //дані матіпуляції проводились через те що при виведені в консоль якщо в нас в обєкті є обєкт то він праивльно виводитись не буде, і нам потрібно було преребрати не тільки обєкт а й обєкт в обєкті
+// console.log(counter);
