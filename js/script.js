@@ -582,24 +582,155 @@
 //////////////lesson 23 ООП
 
 
-const soldier =  {
-    health: 400,
-    armour: 100
-
-};
-
-const john = Object.create(soldier);
- 
-// const john ={
-//     health: 100,
+// const soldier =  {
+//     health: 400,
+//     armour: 100
 
 // };
 
-// john.__proto__ = soldier;// метод 1(старий) за допомогою методу john.__proto__ = soldier ми зазначаємо що джон буде мати властивості такіж як і в його прототипу в солдата(soldier),
-// //видає помилку через те що зараз таке не використовується в джс
+// const john = Object.create(soldier);
+ 
+// // const john ={
+// //     health: 100,
 
-object.setPrototypoOf(john, soldier);//метод 2(новий) виконує теж саме що і .__proto__ = soldier; але метод 2 новий і його використовують, це вважається правильне написання. 
+// // };
 
-console.log(john.armour);
+// // john.__proto__ = soldier;// метод 1(старий) за допомогою методу john.__proto__ = soldier ми зазначаємо що джон буде мати властивості такіж як і в його прототипу в солдата(soldier),
+// // //видає помилку через те що зараз таке не використовується в джс
+
+// object.setPrototypoOf(john, soldier);//метод 2(новий) виконує теж саме що і .__proto__ = soldier; але метод 2 новий 
+//і його використовують, це вважається правильне написання 
+
+// console.log(john.armour);
+
+/////////////////////////
+
+
+
+/////lesson24 practic №4
+
+/* Задание на урок:
+
+1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+
+2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+
+3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+при помощи метода forEach вывести в консоль сообщения в таком виде:
+"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+
+
+
+
+//1) всі фонкції перемістили в метод
+
+const personalMovieDB = {//стфорюємо зміннну-базуданих
+    count: 0,
+    movies: {},//в цю змінну будемо виводити
+    actors: {},
+    genres: [],
+    privat: false,
+    start: function() {
+       personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
+    
+        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
+        }
+    },
+    rememberMyFilms: function() {
+        for (let i = 0; i < 2; i++) {
+            const a = prompt('Один із останіх переглянутих філмів', ''),
+                  b = prompt('Дайте його цінку', '');
+        
+            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+                console.log('done');
+            } else {
+                console.log('error');
+                i--;//оПератор декрименту, щоб якщо у нас if 
+                //не виконається щоб цикл повернувся ще раз до початку і користувач 
+                //був змушений вписати відповідь а не залишати пусту сторінку, пуста сторіна це у нас null
+            }
+        
+        }
+    
+    },
+    detectetPersonalLevel: function()  {
+    
+        if (personalMovieDB.count < 10){
+            console.log('переглянуто дуже мало фільмів');
+        } else if (personalMovieDB.count >= 10 && personalMovieDB.count > 10) {
+            console.log(' ви класний кіноглядач');
+        } else if (personalMovieDB.count >= 30) {
+            console.log('ви кіноман');
+        } else {
+            console.log('виникла помилка');
+        }
+    
+    },
+    showMyDB: function (hidden) {
+        if (!hidden) {
+            console.log(personalMovieDB);
+    
+        }
+    
+    },
+
+    ///завдання 2 де функція переключає приватність БД якщо приватна то відключає це а якщо відкрита то дає їй приватність
+    toogLeVasibleMyBD: function() {
+        if (personalMovieDB.privat) {
+            personalMovieDB.privat = false;
+        } else {
+            personalMovieDB.privat = true;
+        }
+    },
+
+//3)забороняємо користувачу залишити пусте місціе і якщо таке є повертаємо його назад поки він не дасть віповідь
+ //використовуємо метод forEach і даємо питання корисутвачу по жанрах фільму і це все виводимо 
+writeYourGenres: function() {
+        for (let i = 1; i < 2; i++){
+
+  //метод 1
+            // let  genre = prompt(`Ваш улюблений жанр під номером: ${i}`);//!!!щоб працювало ${i} потрібно поставити 
+            // //не " а `  там де Ё !!!!!
+             
+            // if (genre === ''  || genre == null) {
+            //     console.log('ви ввели некоректні дані або не ввели її взагалі');
+            //     i--;
+                
+            // } else { 
+            // personalMovieDB.genres[i - 1] = genre;
+            // }
+// метод 2
+        let  genres = prompt('ведіть Ваш улюблений жанр через кому:');
+
+            if (genres === ''  || genres == null) {
+                console.log('ви ввели некоректні дані або не ввели її взагалі').toLowerCase();
+                i--;
+                
+            } else { 
+            personalMovieDB.genres = genres.split(', ');//split() розбиває строку на масив через ,
+            personalMovieDB.genres.sort();
+        }
+
+        }
+
+        personalMovieDB.genres.forEach((item, i)=> {// => -це ствоерння функції таке ж як  function() тільки скорочено
+            console.log(`Любимый жанр ${i + 1} - это ${item}`)
+
+        });
+    }
+
+};
+
+
+
+
+
 
 
