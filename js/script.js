@@ -609,128 +609,180 @@
 
 /////lesson24 practic №4
 
-/* Задание на урок:
+// /* Задание на урок:
 
-1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
-перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
-Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+// 1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+// перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+// Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
 
-2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
-переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+// 2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+// переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
 
-3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
-
-
+// 3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+// Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+// при помощи метода forEach вывести в консоль сообщения в таком виде:
+// "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
 
 
-//1) всі фонкції перемістили в метод
 
-const personalMovieDB = {//стфорюємо зміннну-базуданих
-    count: 0,
-    movies: {},//в цю змінну будемо виводити
-    actors: {},
-    genres: [],
-    privat: false,
-    start: function() {
-       personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
+
+// //1) всі фонкції перемістили в метод
+
+// const personalMovieDB = {//стфорюємо зміннну-базуданих
+//     count: 0,
+//     movies: {},//в цю змінну будемо виводити
+//     actors: {},
+//     genres: [],
+//     privat: false,
+//     start: function() {
+//        personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
     
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
-        }
-    },
-    rememberMyFilms: function() {
-        for (let i = 0; i < 2; i++) {
-            const a = prompt('Один із останіх переглянутих філмів', ''),
-                  b = prompt('Дайте його цінку', '');
+//         while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+//             personalMovieDB.count = +prompt('Скільки фільмів ви бачили?', '');
+//         }
+//     },
+//     rememberMyFilms: function() {
+//         for (let i = 0; i < 2; i++) {
+//             const a = prompt('Один із останіх переглянутих філмів', ''),
+//                   b = prompt('Дайте його цінку', '');
         
-            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-            } else {
-                console.log('error');
-                i--;//оПератор декрименту, щоб якщо у нас if 
-                //не виконається щоб цикл повернувся ще раз до початку і користувач 
-                //був змушений вписати відповідь а не залишати пусту сторінку, пуста сторіна це у нас null
-            }
+//             if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+//                 personalMovieDB.movies[a] = b;
+//                 console.log('done');
+//             } else {
+//                 console.log('error');
+//                 i--;//оПератор декрименту, щоб якщо у нас if 
+//                 //не виконається щоб цикл повернувся ще раз до початку і користувач 
+//                 //був змушений вписати відповідь а не залишати пусту сторінку, пуста сторіна це у нас null
+//             }
         
-        }
+//         }
     
-    },
-    detectetPersonalLevel: function()  {
+//     },
+//     detectetPersonalLevel: function()  {
     
-        if (personalMovieDB.count < 10){
-            console.log('переглянуто дуже мало фільмів');
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count > 10) {
-            console.log(' ви класний кіноглядач');
-        } else if (personalMovieDB.count >= 30) {
-            console.log('ви кіноман');
-        } else {
-            console.log('виникла помилка');
-        }
+//         if (personalMovieDB.count < 10){
+//             console.log('переглянуто дуже мало фільмів');
+//         } else if (personalMovieDB.count >= 10 && personalMovieDB.count > 10) {
+//             console.log(' ви класний кіноглядач');
+//         } else if (personalMovieDB.count >= 30) {
+//             console.log('ви кіноман');
+//         } else {
+//             console.log('виникла помилка');
+//         }
     
-    },
-    showMyDB: function (hidden) {
-        if (!hidden) {
-            console.log(personalMovieDB);
+//     },
+//     showMyDB: function (hidden) {
+//         if (!hidden) {
+//             console.log(personalMovieDB);
     
-        }
+//         }
     
-    },
+//     },
 
-    ///завдання 2 де функція переключає приватність БД якщо приватна то відключає це а якщо відкрита то дає їй приватність
-    toogLeVasibleMyBD: function() {
-        if (personalMovieDB.privat) {
-            personalMovieDB.privat = false;
-        } else {
-            personalMovieDB.privat = true;
-        }
-    },
+//     ///завдання 2 де функція переключає приватність БД якщо приватна то відключає це а якщо відкрита то дає їй приватність
+//     toogLeVasibleMyBD: function() {
+//         if (personalMovieDB.privat) {
+//             personalMovieDB.privat = false;
+//         } else {
+//             personalMovieDB.privat = true;
+//         }
+//     },
 
-//3)забороняємо користувачу залишити пусте місціе і якщо таке є повертаємо його назад поки він не дасть віповідь
- //використовуємо метод forEach і даємо питання корисутвачу по жанрах фільму і це все виводимо 
-writeYourGenres: function() {
-        for (let i = 1; i < 2; i++){
+// //3)забороняємо користувачу залишити пусте місціе і якщо таке є повертаємо його назад поки він не дасть віповідь
+//  //використовуємо метод forEach і даємо питання корисутвачу по жанрах фільму і це все виводимо 
+// writeYourGenres: function() {
+//         for (let i = 1; i < 2; i++){
 
-  //метод 1
-            // let  genre = prompt(`Ваш улюблений жанр під номером: ${i}`);//!!!щоб працювало ${i} потрібно поставити 
-            // //не " а `  там де Ё !!!!!
+//   //метод 1
+//             // let  genre = prompt(`Ваш улюблений жанр під номером: ${i}`);//!!!щоб працювало ${i} потрібно поставити 
+//             // //не " а `  там де Ё !!!!!
              
-            // if (genre === ''  || genre == null) {
-            //     console.log('ви ввели некоректні дані або не ввели її взагалі');
-            //     i--;
+//             // if (genre === ''  || genre == null) {
+//             //     console.log('ви ввели некоректні дані або не ввели її взагалі');
+//             //     i--;
                 
-            // } else { 
-            // personalMovieDB.genres[i - 1] = genre;
-            // }
-// метод 2
-        let  genres = prompt('ведіть Ваш улюблений жанр через кому:');
+//             // } else { 
+//             // personalMovieDB.genres[i - 1] = genre;
+//             // }
+// // метод 2
+//         let  genres = prompt('ведіть Ваш улюблений жанр через кому:');
 
-            if (genres === ''  || genres == null) {
-                console.log('ви ввели некоректні дані або не ввели її взагалі').toLowerCase();
-                i--;
+//             if (genres === ''  || genres == null) {
+//                 console.log('ви ввели некоректні дані або не ввели її взагалі').toLowerCase();
+//                 i--;
                 
-            } else { 
-            personalMovieDB.genres = genres.split(', ');//split() розбиває строку на масив через ,
-            personalMovieDB.genres.sort();
-        }
+//             } else { 
+//             personalMovieDB.genres = genres.split(', ');//split() розбиває строку на масив через ,
+//             personalMovieDB.genres.sort();
+//         }
 
-        }
+//         }
 
-        personalMovieDB.genres.forEach((item, i)=> {// => -це ствоерння функції таке ж як  function() тільки скорочено
-            console.log(`Любимый жанр ${i + 1} - это ${item}`)
+//         personalMovieDB.genres.forEach((item, i)=> {// => -це ствоерння функції таке ж як  function() тільки скорочено
+//             console.log(`Любимый жанр ${i + 1} - это ${item}`)
 
-        });
-    }
+//         });
+//     }
 
-};
-
-
+// };
 
 
+////////////////////////////////////////////////
+
+////////lesson 26  типізація
+
+// to stricg (перетворюємо що небуть в строку)
+
+// 1) спосіб 1 і команда String(null/4)за допопмогою якого перетворюємо типип даних нуль і число в строковий тип даних
+console.log(typeof(String(null)));
+console.log(typeof(String(4)));
+
+//2) конкретинація - це накладання строк або строків з чимось, в нашому випадку нижче це з числом 5 в нас в результаті вийде строка, тому що при наложенні строки на щось виходить строка в кінцевому результаті
+console.log(typeof(5 + ''));
+
+const num = 5;
+
+console.log("https://vk.com/catalog/" + num);
+
+const fontSize = 26 + 'px';
 
 
+// to number (перетворюємо що небуть в число)
 
+// 1)спосіб 1 який дає змогу перетворити з строчногго типу даних в числовий за дпопмогою команди number
+console.log(typeof(number('4')));
+
+// 2)спосіб 2 який дає змогу зробити теж саме що і спосіб 1 але набагато швидше і правельніше це унарний плюч "+'..'" це плюс який ставиться перед іншим типом даних
+console.log(typeof(+'5'));
+
+// 3) спосіб 3 пеетворення з строкового в числовий тип даних за допомогою методу parseInt  
+console.log(typeof(parseInt("15px", 10)));
+
+
+let answ = +prompt("Hello", "");
+
+
+//to boolean (в булінове значення)
+
+
+// 0, '', undefined, null,NaN; - це все що в буліновому значенні завжди буде = false
+
+///1) спосіб 1
+let switcher = null;//на даному етапі в нас switcher = 0 тобто false, віповідно до цього команда виводу в консоль не буде спрацьовувати тому що в нас там нічого немає 
+
+if (switcher) {
+    console.log('Working...');
+}
+switcher = 1;//на даному етапі switcher = 1 тому він = true і комманда виводу в консоль буде спрацьовувати так як в нас вже є якісь дані в нашому випадку це 1
+
+if (switcher) {
+    console.log('Working...');
+}
+
+///2)спосіб 2
+console.log(typeof(boolean('4')));//перетворює ичсловий тип даних в буліновий, тобто це може бути true or false
+
+//2)спосіб 23
+console.log(typeof(!!'44444'));// таке ж як і спосіб 2 тільки замість команди (boolean('4')) ми використовуємо скорочену форму це "!! і строка "..." " 
