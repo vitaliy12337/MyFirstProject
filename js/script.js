@@ -834,22 +834,39 @@
 
 
 /////////////////////////////////////////////////////
-//////leson 28
+//////leson 28 методи селектори класи ІД
 
-const box = document.getElementById('box');//за допопмогою getElementById( можемо получити або звертатись до певних елементів по ід які є в індеккс.хтмл
+// const box = document.getElementById('box');//за допопмогою getElementById( можемо получити або звертатись до певних елементів по ід які є в індеккс.хтмл
 
-console.log(box);
+// console.log(box);
 
-const btns = document.getElementsByTagName('button');//getElementsByTagName('button'); за допомогою цієї команди можна получити колекцію тегів які є на сторінці, щоб звернутись до лиш одного тегу можна вписати двома способами getElementsByTagName('button')[1];- нам виведе конпку під номером 2(тому що номерація починається з 0.1.2...)
-console.log(btns);//.log(btns[1]) це другий спосіб як можна звернутись до певного тегу,до кнопки під номером 2
+// ///дальше підуть методи які прцюють з псевдомасивами..
 
-const circles = document.getElementsByClassName('circle');//метод який працює зкласами, не ставиться крапка тому що сам метод вже створений для роботи з класами
-console.log(circles);
+// const btns = document.getElementsByTagName('button');//getElementsByTagName('button'); за допомогою цієї команди можна получити колекцію тегів які є на сторінці, щоб звернутись до лиш одного тегу можна вписати двома способами getElementsByTagName('button')[1];- нам виведе конпку під номером 2(тому що номерація починається з 0.1.2...)
+// console.log(btns);//.log(btns[1]) це другий спосіб як можна звернутись до певного тегу,до кнопки під номером 2
 
+// const circles = document.getElementsByClassName('circle');//метод який працює зкласами, не ставиться крапка тому що сам метод вже створений для роботи з класами
+// console.log(circles);
+
+// const hearts = document.querySelectorAll('.heart');//метод querySelectorAll позволяє нам получити всі елементи зі сторінки
+// hearts.forEach(item =>{
+//     console.log(item);
+// });//за допомогою колбек функції вивели кожне сердечко в констоль по окремо
+
+// const oneHeart = document.querySelector('.heart');//метод querySelector позволяє нам получити один  елемент зі сторінки який бере селектор тобто клас і бере перший леемент і виводить
+// console.log(oneHeart);
+
+//////////////////////////////////
+
+//////////LESONS 29  діі і елементи на сторінці
+
+const box = document.getElementById('box');
+const btns = document.getElementsByTagName('button');
+const circles = document.getElementsByClassName('circle');
 const hearts = document.querySelectorAll('.heart');
-hearts.forEach(item =>{
-    console.log(item);
-});//за допомогою колбек функції вивели кожне сердечко в констоль по окремо
-
 const oneHeart = document.querySelector('.heart');
-console.log(oneHeart);
+
+box.style.backgroundColor = 'blue';
+box.style.width = '500px';
+btns[1].style.borderRadius = '100%';
+circles[1].style.backgroundColor = 'red';
